@@ -1,0 +1,45 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Name {
+  firstName: String!
+  lastName: String!
+}
+
+type GeoLocation {
+  lat: String!
+  long: String!
+}
+
+type Address {
+  city: String!
+  street: String!
+  number: Float!
+  zipcode: String!
+  geolocation: GeoLocation!
+}
+
+"""User entity"""
+type UserEntity {
+  """A unique identifier"""
+  id: ID!
+  email: String!
+  username: String!
+  passwordHash: String!
+  name: Name!
+  address: Address!
+  phone: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  users: [UserEntity!]!
+  user(id: String!): UserEntity!
+}
