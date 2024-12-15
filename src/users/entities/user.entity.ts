@@ -5,14 +5,14 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, HideField, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 class Name {
-  @Column({ name: 'first_name' })
+  @Column()
   firstName: string;
 
-  @Column({ name: 'last_name' })
+  @Column()
   lastName: string;
 }
 
@@ -56,7 +56,8 @@ export class UserEntity {
   @Column()
   username: string;
 
-  @Column({ name: 'password_hash' })
+  @Column({ select: false })
+  @HideField()
   passwordHash: string;
 
   @Column(() => Name)
@@ -68,9 +69,9 @@ export class UserEntity {
   @Column()
   phone: string;
 
-  @CreateDateColumn({ name: 'created_at' })
+  @CreateDateColumn()
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @UpdateDateColumn()
   updatedAt: Date;
 }
