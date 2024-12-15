@@ -5,7 +5,10 @@ import { SignUpInput } from './dto/sign-up.input';
 import { SignInInput } from './dto/sign-in.input';
 import { RefreshTokenInput } from './dto/refresh-token.input';
 import { TokenResponse } from './responses/token.response';
+import { Auth } from './decorators/auth.decorator';
+import { AuthTypeEnum } from './enums/auth-type.enum';
 
+@Auth(AuthTypeEnum.None)
 @Resolver('Authentication')
 export class AuthenticationResolver {
   constructor(private readonly authService: AuthenticationService) {}
