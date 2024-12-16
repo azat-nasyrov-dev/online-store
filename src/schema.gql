@@ -26,11 +26,18 @@ type UserEntity {
   id: ID!
   email: String!
   username: String!
+  role: RoleEnum!
   name: Name!
   address: Address!
   phone: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+}
+
+"""User roles available in the system"""
+enum RoleEnum {
+  Regular
+  Admin
 }
 
 """
