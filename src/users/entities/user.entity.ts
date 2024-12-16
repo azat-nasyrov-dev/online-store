@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Field, HideField, ID, ObjectType } from '@nestjs/graphql';
+import { RoleEnum } from '../enums/role.enum';
 
 @ObjectType()
 class Name {
@@ -59,6 +60,9 @@ export class UserEntity {
   @Column({ select: false })
   @HideField()
   passwordHash: string;
+
+  @Column({ enum: RoleEnum, default: RoleEnum.Regular })
+  role: RoleEnum;
 
   @Column(() => Name)
   name: Name;
