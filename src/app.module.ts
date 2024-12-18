@@ -8,6 +8,7 @@ import { join } from 'path';
 import { UsersModule } from './users/users.module';
 import { IamModule } from './iam/iam.module';
 import { CategoriesModule } from './categories/categories.module';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { CategoriesModule } from './categories/categories.module';
     UsersModule,
     IamModule,
     CategoriesModule,
+    ProductsModule,
   ],
 })
 export class AppModule {}
