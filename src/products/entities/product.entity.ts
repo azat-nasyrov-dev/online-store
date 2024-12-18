@@ -18,5 +18,5 @@ export class ProductEntity {
   description: string;
 
   @Column('simple-array')
-  image: string[];
+  images: string[];
 }
