@@ -21,15 +21,12 @@ export class RolesGuard implements CanActivate {
     }
 
     const gqlContext = GqlExecutionContext.create(context);
-    const isGraphQL = context.getType().toString() === 'graphql';
-
-    const user: ActiveUserDataInterface = isGraphQL
-      ? gqlContext.getContext()?.[REQUEST_USER_KEY]
-      : context.switchToHttp().getRequest()?.[REQUEST_USER_KEY];
+    const user: ActiveUserDataInterface = gqlContext.getContext().req[REQUEST_USER_KEY];
 
     if (!user) {
       return false;
     }
+
     return contextRoles.some((role) => user.role === role);
   }
 }
