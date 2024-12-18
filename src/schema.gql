@@ -57,11 +57,23 @@ type CategoryEntity {
   title: String!
 }
 
+"""Product entity"""
+type ProductEntity {
+  """A unique identifier"""
+  id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  images: [String!]!
+}
+
 type Query {
   users: [UserEntity!]!
   user(id: String!): UserEntity!
   categories: [CategoryEntity!]!
   category(id: String!): CategoryEntity!
+  products: [ProductEntity!]!
+  product(id: String!): ProductEntity!
 }
 
 type Mutation {
@@ -71,6 +83,9 @@ type Mutation {
   createCategory(title: String!): CategoryEntity!
   updateCategory(id: String!, title: String!): CategoryEntity!
   deleteCategory(id: String!): Boolean!
+  createProduct(createProductInput: CreateProductInput!): ProductEntity!
+  updateProduct(id: String!, updateProductInput: UpdateProductInput!): ProductEntity!
+  deleteProduct(id: String!): Boolean!
 }
 
 """SignUp input object type."""
@@ -110,4 +125,20 @@ input SignInInput {
 
 input RefreshTokenInput {
   refreshToken: String!
+}
+
+"""Create product input object type."""
+input CreateProductInput {
+  name: String!
+  price: Float!
+  description: String!
+  images: [String!]!
+}
+
+"""Update product input object type."""
+input UpdateProductInput {
+  name: String
+  price: Float
+  description: String
+  images: [String!]
 }
