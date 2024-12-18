@@ -50,15 +50,27 @@ type TokenResponse {
   refreshToken: String!
 }
 
+"""Category entity"""
+type CategoryEntity {
+  """A unique identifier"""
+  id: ID!
+  title: String!
+}
+
 type Query {
   users: [UserEntity!]!
   user(id: String!): UserEntity!
+  categories: [CategoryEntity!]!
+  category(id: String!): CategoryEntity!
 }
 
 type Mutation {
   signUp(signUpInput: SignUpInput!): UserEntity!
   signIn(signInInput: SignInInput!): TokenResponse!
   refreshTokens(refreshTokenInput: RefreshTokenInput!): TokenResponse!
+  createCategory(title: String!): CategoryEntity!
+  updateCategory(id: String!, title: String!): CategoryEntity!
+  deleteCategory(id: String!): Boolean!
 }
 
 """SignUp input object type."""
